@@ -27,7 +27,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: sdange/${{ values.app_name }}:${{ '${{ env.SHORT_SHA }}'' }}
+          tags: sdange/${{ values.app_name }}:${{ '${{ env.SHORT_SHA }}' }}
     outputs:
       COMMIT_ID: ${{ '${{ env.SHORT_SHA }}' }}
 
