@@ -1,3 +1,0 @@
-Hi this is a test file
-the apps name is : ${{app_name}}
-the apps env is : ${{app_env}}
