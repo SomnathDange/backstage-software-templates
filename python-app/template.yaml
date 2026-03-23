@@ -13,6 +13,7 @@ spec:
       required:
         - component_id
         - environment
+        - sonar_org
       properties:
         component_id:
           title: Component name
@@ -26,6 +27,10 @@ spec:
           enum:
             - dev
             - prod
+        sonar_org:
+          title: SonarCloud Organization Key
+          type: string
+          description: Your SonarCloud organization key (e.g. my-org)
 
   steps:
     - id: fetch-base
@@ -36,7 +41,7 @@ spec:
         values:
           app_name: ${{parameters.component_id}}
           app_env: ${{parameters.environment}}
-          sonar_org: somanath-dange-backstage
+          sonar_org: ${{parameters.sonar_org}}
 
     - id: publish
       name: Publish
@@ -46,6 +51,9 @@ spec:
         repoUrl: github.com?owner=somanath-dange-backstage&repo=${{parameters.component_id}}
         protectDefaultBranch: false
         repoVisibility: public
+        secrets:
+          SONAR_ORG: ${{ parameters.sonar_org }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
     - id: register
       name: Register
