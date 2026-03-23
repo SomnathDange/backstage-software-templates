@@ -26,6 +26,10 @@ spec:
           enum:
             - dev
             - prod
+        sonar_org:
+          title: SonarCloud Organization Key
+          type: string
+          description: Your SonarCloud organization key
 
   steps:
     - id: fetch-base
@@ -36,6 +40,7 @@ spec:
         values:
           app_name: ${{parameters.component_id}}
           app_env: ${{parameters.environment}}
+          sonar_org: ${{parameters.sonar_org}}
 
     - id: publish
       name: Publish
