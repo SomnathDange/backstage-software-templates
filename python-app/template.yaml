@@ -36,7 +36,7 @@ spec:
         values:
           app_name: ${{parameters.component_id}}
           app_env: ${{parameters.environment}}
-          sonar_org: ${{parameters.sonar_org}}
+          sonar_org: somanath-dange-backstage
 
     - id: publish
       name: Publish

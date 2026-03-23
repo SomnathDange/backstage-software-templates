@@ -30,6 +30,9 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@v3
         env:
           SONAR_TOKEN: ${{ '${{ secrets.SONAR_TOKEN }}' }}
+        with:
+          args: >
+            -Dsonar.organization=${{ '${{ secrets.SONAR_ORG }}' }}
 
   build:
     needs: sonarqube
