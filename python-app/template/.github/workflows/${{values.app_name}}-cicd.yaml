@@ -27,10 +27,9 @@ jobs:
             -d "name=${{ '${{ github.event.repository.name }}' }}&project=${{ '${{ github.event.repository.name }}' }}&organization=somanath-dange-backstage"
 
       - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v6
+        uses: SonarSource/sonarcloud-github-action@v3
         env:
           SONAR_TOKEN: ${{ '${{ secrets.SONAR_TOKEN }}' }}
-          SONAR_HOST_URL: ${{ '${{ secrets.SONAR_HOST_URL }}' }}
 
   build:
     needs: sonarqube
