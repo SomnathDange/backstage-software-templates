@@ -52,7 +52,6 @@ spec:
         protectDefaultBranch: false
         repoVisibility: public
         secrets:
-          SONAR_ORG: ${{ parameters.sonar_org }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
     - id: register
