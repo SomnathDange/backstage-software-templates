@@ -32,7 +32,7 @@ jobs:
           SONAR_TOKEN: ${{ '${{ secrets.SONAR_TOKEN }}' }}
         with:
           args: >
-            -Dsonar.organization=${{ '${{ secrets.SONAR_ORG }}' }}
+            -Dsonar.organization=somanath-dange-backstage
 
   build:
     needs: sonarqube
