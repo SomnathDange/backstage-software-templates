@@ -24,7 +24,7 @@ jobs:
           curl -s \
             -u ${{ '${{ secrets.SONAR_TOKEN }}' }}: \
             -X POST "https://sonarcloud.io/api/projects/create" \
-            -d "name=${{ '${{ github.event.repository.name }}' }}&project=${{ '${{ github.event.repository.name }}' }}&organization=${{ '${{ secrets.SONAR_ORG }}' }}"
+            -d "name=${{ '${{ github.event.repository.name }}' }}&project=${{ '${{ github.event.repository.name }}' }}&organization=${{ values.sonar_org }}"
 
       - name: SonarQube Scan
         uses: SonarSource/sonarcloud-github-action@v3
@@ -32,7 +32,7 @@ jobs:
           SONAR_TOKEN: ${{ '${{ secrets.SONAR_TOKEN }}' }}
         with:
           args: >
-            -Dsonar.organization=${{ '${{ secrets.SONAR_ORG }}' }}
+            -Dsonar.organization=${{ values.sonar_org }}
             -Dsonar.projectKey=${{ '${{ github.event.repository.name }}' }}
             -Dsonar.projectName=${{ '${{ github.event.repository.name }}' }}
             -Dsonar.sources=src
